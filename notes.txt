@@ -1,0 +1,19 @@
+Q: why stylesheet need to be appended in the head not in the body tag?
+A: when the stylesheet is appended inside the body tag initially html content is loaded first then styles
+this makes the page slower and sometimes page looks distorted .It also effects page performance.
+It is always recommended to include stylesheet in head.
+
+Q: what if react script is wriiten first and then includes CDN will react script works ?
+A: no. React script doesn't work when it is included before including the CDN.script
+
+Q: there is already content in the div tag in body of html and there is a react script written for creating element.
+will the script override the content in the div ?
+or 
+will it append the content after the existing content?
+A: it will replace the existing content until the script loads
+
+Q: what is createElemnt in react?
+A: it is an object. we will pass 2 parameters to it. 
+1. element name 
+2. attribute (id or class or inline style)
+3. content inside tag

@@ -1,0 +1,28 @@
+#parent {
+  width: 350px;
+  height: 350px;
+  border: 1px soild black;
+  background-color: aqua;
+}
+
+#child1{
+    width: 150px;
+    height: 150px;
+    background-color: blueviolet;
+}
+#child2{
+    width: 150px;
+    height: 150px;
+    background-color: cadetblue;
+}
+#inner_child1{
+    width: 100px;
+    height: 100px;
+    background-color: chartreuse;
+}
+
+#inner_child2{
+    width: 100px;
+    height: 100px;
+    background-color: chocolate;
+}

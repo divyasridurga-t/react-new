@@ -1,3 +1,6 @@
+import React from "react";
+import ReactDOM from "react-dom/client";
+
 // approach-1
 // let heading = React.createElement(
 //   "h1",

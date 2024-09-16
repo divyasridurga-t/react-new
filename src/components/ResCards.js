@@ -1,8 +1,20 @@
 import { IMG } from "../utils/constants";
 
 function ResCards({ data, key }) {
-    let { info: { name = '', cloudinaryImageId = '', locality = '', areaName = '', costForTwo = '', cuisines = [], avgRating = 0 } = {}, sla: { lastMileTravelString = '' } = {}, availability: { nextCloseTime = '' } = {}
-    } = data
+    console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
+    
+    let {
+        info:
+        { name = '', cloudinaryImageId = '', locality = '', areaName = '', costForTwo = '', cuisines = [], avgRating = 0, availability: { nextCloseTime = '' } = {} } = {},
+        sla: { lastMileTravelString = '' } = {},
+
+    } = data;
+    let current_time = new Date().getTime();
+    let existing_time = new Date(nextCloseTime).getTime();
+    let time_difference = existing_time - current_time;
+    let minutes = Math.floor(time_difference / (1000 * 60));
+    console.log();
+
     return (
         <div className="thumb_card" key={key}>
             <div className="img_container">
@@ -24,7 +36,7 @@ function ResCards({ data, key }) {
                 </div>
                 <div className="res_status_dist">
                     <p className="status">
-                        Closes soon in 30 minutes
+                        {minutes <= 30 ? `Closes soon in 30 minutes` : ''}
                     </p>
                     <p>
                         {lastMileTravelString}

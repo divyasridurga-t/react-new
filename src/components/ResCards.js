@@ -1,8 +1,6 @@
 import { IMG } from "../utils/constants";
 
 function ResCards({ data, key }) {
-    console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
-    
     let {
         info:
         { name = '', cloudinaryImageId = '', locality = '', areaName = '', costForTwo = '', cuisines = [], avgRating = 0, availability: { nextCloseTime = '' } = {} } = {},
@@ -13,7 +11,6 @@ function ResCards({ data, key }) {
     let existing_time = new Date(nextCloseTime).getTime();
     let time_difference = existing_time - current_time;
     let minutes = Math.floor(time_difference / (1000 * 60));
-    console.log();
 
     return (
         <div className="thumb_card" key={key}>

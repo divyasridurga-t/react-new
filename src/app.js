@@ -3,29 +3,45 @@ import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import About from "./components/about";
+import Error from "./components/error";
+import Layout from "./components/Layout";
+import RestaurantDetailPage from "./components/restaurantDetailPage";
 
 function Applayout() {
   return (
     <div className="app">
-      <Header />
-      <Body />
+      <Layout>
+        <Body />
+      </Layout>
     </div>
   );
 }
 
-let appRouter= createBrowserRouter([
+let appRouter = createBrowserRouter([
   {
     path: "/",
     element: <Applayout />,
+    errorElement: <Error />,
   },
   {
-    path:'/about',
-    element:<h1>this is about page !!!!</h1>
+    path: "/about",
+    element: <About />,
+    errorElement: <Error />,
   },
   {
-    path:'/:section',
-    element:<h1>dynamic route</h1>
-  }
+    path: "/:section",
+    element: (
+      <Layout>
+        <h1>dynamic route</h1>
+      </Layout>
+    ),
+    errorElement: <Error />,
+  },
+  {
+    path: "/restaurants/:resname",
+    element: <RestaurantDetailPage />,
+  },
 ]);
 
 // babel is the one which converts the functions and html elements to react create element and then renders to DOM

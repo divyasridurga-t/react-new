@@ -1,6 +1,7 @@
 body {
   margin: 0;
   padding: 0;
+  font-family: sans-serif;
 }
 .header {
   display: flex;
@@ -75,4 +76,48 @@ p {
   border-radius: 5px;
   margin-left: 23px;
   cursor: pointer;
+}
+
+.res_card_menu {
+  width: 200px;
+  height: 350px;
+  display: flex;
+  flex-wrap: nowrap;
+  background: cadetblue;
+  color: white;
+}
+.res_top_container {
+  width: 100%;
+}
+.res_name_container {
+  margin: auto;
+  width: 200px;
+}
+.res_name_container h2 {
+  font-size: 30px;
+  margin-bottom: 5px;
+}
+.menu_container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+.empty_container {
+  width: 200px;
+  height: 150px;
+}
+.dish_description , .res_description h2{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+.res_description {
+  padding: 0px 5px 0px 5px;
+}
+.res_card_menu_container {
+  /* padding: 0px 10px 0px 10px; */
+  width: 90%;
+  margin: auto;
 }

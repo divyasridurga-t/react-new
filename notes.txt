@@ -17,3 +17,7 @@ A: it is an object. we will pass 2 parameters to it.
 1. element name 
 2. attribute (id or class or inline style)
 3. content inside tag
+
+
+client side routing
+server side routing

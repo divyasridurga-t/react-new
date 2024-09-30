@@ -21,3 +21,23 @@ A: it is an object. we will pass 2 parameters to it.
 
 client side routing
 server side routing
+
+super in class comp- it allows props to pass to parent so that it can be accessed anywhere in the component
+
+when ever class based loading is done it creates instance of class
+when istance is created constructor method is called 
+constructor is used for receiving props and creating states
+
+this.state={
+    count:'',
+    text:'hello'
+}
+we can create multiple state variable inside this.state object
+
+when component is loaded
+constructor is called first , then render is called
+componentDidMount is called after component is mounted to DOM
+
+componentDidMount is used for api call 
+initially UI renders then api all happens then data is filled into components 
+api call will happen in componentDidMount

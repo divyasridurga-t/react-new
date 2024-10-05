@@ -60,8 +60,8 @@ function Body() {
     <div className="body">
       {/* search */}
       <Searchbar />
-      <div className="filter">
-        <button className="top_res_btn" onClick={handleClick}>
+      <div className="">
+        <button className=" bg-black" onClick={handleClick}>
           Top Rated Restaurants
         </button>
         <div>

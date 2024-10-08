@@ -1,13 +1,16 @@
 import Searchbar from "./Searchbar";
 import ResCards from "./ResCards";
 import DATA from "../utils/mockData";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import userContext from "../hooks/userContext";
 
 function Body() {
   let [data, setData] = useState([]);
   let [value, setValue] = useState("");
   let [filteredData, setFilteredData] = useState([]);
+  let { dimension: { lat = '', lon = '' } = {} } = useContext(userContext);
+
 
   function handleClick() {
     let filtered_data = data.filter((key) => {
@@ -48,9 +51,10 @@ function Body() {
   return filteredData.length ? (
     <div className="body">
       {/* search */}
+      <p>{lat}, {lon}</p>
       <Searchbar />
       <div className="">
-        <button className=" bg-black" onClick={handleClick}>
+        <button onClick={handleClick}>
           Top Rated Restaurants
         </button>
         <div>
@@ -68,9 +72,9 @@ function Body() {
       <div className="res_container">
         {filteredData?.length
           ? filteredData.map((item, index) => {
-              let { info: { id = "" } = {} } = item;
-              return <ResCards data={item} key={id} />;
-            })
+            let { info: { id = "" } = {} } = item;
+            return <ResCards data={item} key={id} />;
+          })
           : ""}
       </div>
     </div>

@@ -4,6 +4,7 @@ import DATA from "../utils/mockData";
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import userContext from "../hooks/userContext";
+import useOnlineStatusCheck from "../utils/useOnlineStatusCheck";
 
 function Body() {
   let [data, setData] = useState([]);
@@ -11,6 +12,8 @@ function Body() {
   let [filteredData, setFilteredData] = useState([]);
   let { dimension: { lat = '', lon = '' } = {} } = useContext(userContext);
 
+  let onlineStatus=useOnlineStatusCheck();
+  
 
   function handleClick() {
     let filtered_data = data.filter((key) => {
@@ -46,6 +49,14 @@ function Body() {
       return name.toLowerCase().includes(value.toLowerCase());
     });
     setFilteredData(filteredData);
+  }
+
+  if(!onlineStatus){
+    return (
+      <>
+      <h1>Looks like you are offline please check your internet connection</h1>
+      </>
+    )
   }
 
   return filteredData.length ? (

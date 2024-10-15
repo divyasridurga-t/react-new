@@ -7,6 +7,7 @@ import Error from "./components/error";
 import Layout from "./components/Layout";
 import RestaurantDetailPage from "./components/restaurantDetailPage";
 const About = lazy(() => import("./components/about"));
+import Cart from "./components/Cart";
 
 function Applayout() {
   return (
@@ -46,6 +47,12 @@ let appRouter = createBrowserRouter([
     path: "/restaurants/:resname",
     element: <RestaurantDetailPage />,
   },
+  {
+    path: '/cart',
+    element: <Layout>
+      <Cart />
+    </Layout>
+  }
 ]);
 
 // babel is the one which converts the functions and html elements to react create element and then renders to DOM

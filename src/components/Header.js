@@ -2,20 +2,24 @@ import { useContext, useState } from "react";
 import { LOGO_URL } from "../utils/constants";
 import { Link } from "react-router-dom";
 import userContext from "../hooks/userContext";
+import { useSelector } from "react-redux";
 
 import useOnlineStatusCheck from "../utils/useOnlineStatusCheck";
 
 function Header() {
-  let online=useOnlineStatusCheck()
+  let cartItems = useSelector((store) => store.cart.item);
+  let online = useOnlineStatusCheck()
   let [buttonTxt, setBtnTxt] = useState("Login");
   let { dimension, setDimension } = useContext(userContext);
 
   function handleChange(e) {
     setDimension({
       lat: e.target.value,
-      lon:e.target.value
+      lon: e.target.value
     })
   }
+
+
 
   return (
     <div className="header">
@@ -30,7 +34,7 @@ function Header() {
       <div className="nav-items">
         <ul>
           <li>
-            status:{online? '✅':'🛑'}
+            status:{online ? '✅' : '🛑'}
           </li>
           <li>
             <Link to={"/"}>Home</Link>
@@ -38,17 +42,13 @@ function Header() {
           <li>
             <Link to={"/about"}>About Us</Link>
           </li>
-          <li>
+          {/* <li>
             <Link to={'/contact'}>Contact Us</Link>
-          </li>
-          <li>Cart</li>
-          <button
-            onClick={() => {
-              setBtnTxt(buttonTxt == "Login" ? "Logout" : "Login");
-            }}
-          >
-            {buttonTxt}
-          </button>
+          </li> */}
+          <li><Link to='/cart'>
+            Cart ({cartItems.length})
+          </Link></li>
+
         </ul>
       </div>
     </div>

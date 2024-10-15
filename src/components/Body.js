@@ -12,8 +12,8 @@ function Body() {
   let [filteredData, setFilteredData] = useState([]);
   let { dimension: { lat = '', lon = '' } = {} } = useContext(userContext);
 
-  let onlineStatus=useOnlineStatusCheck();
-  
+  let onlineStatus = useOnlineStatusCheck();
+
 
   function handleClick() {
     let filtered_data = data.filter((key) => {
@@ -25,18 +25,24 @@ function Body() {
     setData(filtered_data);
   }
   async function fetchAPI() {
-    let data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.45228080314395&lng=78.36921878350192&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-    );
-    let res = await data.json();
-    setData(
-      res?.data?.cards?.[2]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants || []
-    );
-    setFilteredData(
-      res?.data?.cards?.[2]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants || []
-    );
+    try {
+      let data = await fetch(
+        "https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.45228080314395&lng=78.36921878350192&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+      );
+      let res = await data.json();
+      setData(
+        res?.data?.cards?.[2]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants || []
+      );
+      setFilteredData(
+        res?.data?.cards?.[2]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants || []
+      );
+    } catch (error) {
+      console.log(error);
+      
+    }
+
   }
 
   useEffect(() => {
@@ -51,10 +57,10 @@ function Body() {
     setFilteredData(filteredData);
   }
 
-  if(!onlineStatus){
+  if (!onlineStatus) {
     return (
       <>
-      <h1>Looks like you are offline please check your internet connection</h1>
+        <h1>Looks like you are offline please check your internet connection</h1>
       </>
     )
   }
